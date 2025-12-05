@@ -160,13 +160,15 @@ body {
   z-index: 2;
 }
 
-.share-btn {
-  transition: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .share-btn {
     transition: background-color 0.3s ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .share-btn {
+    transition: none;
   }
 }
 
