@@ -12,7 +12,7 @@
 
   --main-size: 10rem;
 
-  --paragraph-font-size: 0.8125rem;
+  --main-font-size: 1rem;
 }
 
 body {
@@ -93,24 +93,24 @@ body {
 
 .article-header {
   color: var(--very-dark-blue-color);
-  font-size: 1.15rem;
+  font-size: calc(var(--main-font-size) + 0.15rem);
 }
 
 @media (min-width: 59.375rem) {
   .article-header {
-    font-size: 1.25rem;
+    font-size: calc(var(--main-font-size) + 0.25rem);
   }
 }
 
 .article-description {
-  font-size: 0.9375rem;
+  font-size: calc(var(--main-font-size) - 0.0625rem);
   color: var(--dark-blue-color);
   line-height: 1.5;
   margin-block: calc(var(--small-spacing) * 2);
 }
 @media (min-width: 59.375rem) {
   .article-description {
-    font-size: var(--paragraph-font-size);
+    font-size: calc(var(--main-font-size) - 0.1875rem);
   }
 }
 
@@ -140,12 +140,12 @@ body {
 
 .author-name {
   color: var(--very-dark-blue-color);
-  font-size: var(--paragraph-font-size);
+  font-size: calc(var(--main-font-size) - 0.1875rem);
 }
 
 .article-date {
   color: var(--grayish-blue-color);
-  font-size: var(--paragraph-font-size);
+  font-size: calc(var(--main-font-size) - 0.1875rem);
 }
 
 .share-btn {
@@ -158,27 +158,34 @@ body {
   cursor: pointer;
   position: relative;
   z-index: 2;
-  @media (prefers-reduced-motion: no-preference) {
+}
+@media (prefers-reduced-motion: no-preference) {
+  .share-btn {
     transition: background-color 0.3s ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .share-btn {
+    transition: none;
   }
 }
 
 .share-btn:hover,
 .share-btn--active {
   background-color: var(--dark-blue-color);
-  @media (prefers-reduced-motion: reduce) {
-    transition-duration: 001ms;
-  }
 }
 
-.share-btn:hover .share-icon,
+.share-btn:hover .share-icon {
+  filter: brightness(0) invert(1);
+}
+
 .share-btn--active .share-icon {
   filter: brightness(0) invert(1);
 }
 
 .share-links-menu {
   position: absolute;
-  width: calc(100% + 80px);
+  width: calc(100% + (var(--main-size) / 2));
   height: 100%;
   bottom: 0;
   padding-block: calc(var(--small-spacing) * 2);
